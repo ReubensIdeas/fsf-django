@@ -8,3 +8,5 @@ node_modules/
 .github/
 cloudinary_python.txt
 os.environ.setdefault("DATABASE_URL", "my_copied_database_url")
+*.sqlite3
+__pycache__/
