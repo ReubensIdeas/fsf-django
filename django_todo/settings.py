@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['reubensideas-django-todo-4a84943cd52e.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -87,23 +87,23 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-# }
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
 
-if 'DATABASE_URL' in os.environ and os.environ['DATABASE_URL']:
-    # Use the DATABASE_URL as a string in the database settings
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ['DATABASE_URL'])
-    }
-else:
-    # Provide a default database configuration if DATABASE_URL is not set
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+# if 'DATABASE_URL' in os.environ and os.environ['DATABASE_URL']:
+#     # Use the DATABASE_URL as a string in the database settings
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ['DATABASE_URL'])
+#     }
+# else:
+#     # Provide a default database configuration if DATABASE_URL is not set
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
 
 
 # Password validation
